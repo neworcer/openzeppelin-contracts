@@ -1,3 +1,4 @@
+
 // SPDX-License-Identifier: MIT
 // OpenZeppelin Contracts v4.4.1 (token/ERC20/ERC20.sol)
 
@@ -33,6 +34,7 @@ import "../../utils/Context.sol";
  * allowances. See {IERC20-approve}.
  */
 contract ERC20 is Context, IERC20, IERC20Metadata {
+    //mapping 来做两张表，每个账号的余额，授权情况
     mapping(address => uint256) private _balances;
 
     mapping(address => mapping(address => uint256)) private _allowances;
@@ -312,7 +314,7 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
      */
     function _approve(
         address owner,
-        address spender,
+        address spender, //花钱者，花谁的钱，花owner的钱，就是授权给这个spender来花owner的钱
         uint256 amount
     ) internal virtual {
         require(owner != address(0), "ERC20: approve from the zero address");
